@@ -8,15 +8,19 @@
 <body>
   <div class="sidebar">
     <button class="add-project">Add Project</button>
-    <dialog>
+    <dialog class="project-modal">
+      <button class="close-modal1">x</button>
       <label for="project-name">Name:</label>
       <input type="text" name="project-name" id="project-name">
+      <input type="submit" id="submit-button1">
     </dialog>
+    <div class="projects-container"></div>
   </div>
   <div class="content">
     <div class="tasks-header">Your Tasks</div>
     <button class="add-task">Add Task</button>
-    <dialog>
+    <dialog class="task-modal">
+      <button class="close-modal2">x</button>
       <label for="task-title">Title:</label>
       <input type="text" name="task-title", id="task-title">
       <label for="task-description">Description:</label>
@@ -25,6 +29,7 @@
       <input type="date" name="task-deadline" id="task-deadline">
       <label for="task-notes">Notes:</label>
       <input type="text" name="task-notes" id="task-notes">
+      <input type="submit" id="submit-button2">
     </dialog>
   </div>
 </body>

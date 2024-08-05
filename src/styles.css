@@ -26,6 +26,7 @@ body {
   justify-content: flex-start;
   align-items: center;
   border-right: 1px solid #ecf0f1;
+  overflow-y: auto;
 }
 
 /* Style the Add Project button */
@@ -92,4 +93,87 @@ dialog input {
 
 dialog input[type="date"] {
   padding: 6px;
+}
+
+/* Style the submit button in dialog */
+#submit-button1, #submit-button2 {
+  background-color: #3498db;
+  color: white;
+  border: none;
+  padding: 10px 20px;
+  margin-top: 20px;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+#submit-button1:hover, #submit-button2:hover {
+  background-color: #2980b9;
+}
+
+/* Style the close button in dialog */
+.close-modal1, .close-modal2 {
+  background: none;
+  border: none;
+  color: #ccc;
+  font-size: 20px;
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  cursor: pointer;
+}
+
+.close-modal1:hover, .close-modal2:hover {
+  color: #999;
+}
+
+/* Style the projects container */
+.projects-container {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  padding: 20px;
+  width: 100%;
+  overflow-y: auto;
+}
+
+/* Style the individual project section */
+.project-section {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: #fff;
+  padding: 10px;
+  border-radius: 5px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  transition: box-shadow 0.3s;
+}
+
+.project-section:hover {
+  box-shadow: 0 6px 8px rgba(0, 0, 0, 0.2);
+}
+
+/* Style the project button */
+.project-button {
+  background-color: transparent;
+  border: none;
+  color: #333;
+  font-size: 16px;
+  cursor: pointer;
+}
+
+.project-button:hover {
+  text-decoration: underline;
+}
+
+/* Style the delete icon */
+.delete-icon {
+  width: 20px;
+  height: 20px;
+  cursor: pointer;
+  transition: transform 0.3s;
+}
+
+.delete-icon:hover {
+  transform: scale(1.2);
 }
