@@ -5,13 +5,13 @@ let createProject = function(name) {
   return project;
 }
 
-let createTask = function(title, description, dueDate, notes, checklist) {
+let createTask = function(title, description, dueDate, notes, projectName) {
   let task = {};
   task.title = title;
   task.description = description;
   task.dueDate = dueDate;
   task.notes = notes;
-  task.checklist = checklist;
+  task.projectName = projectName;
   return task;
 }
 

@@ -1,42 +1,60 @@
 import "./styles.css";
 import { createProject, createTask } from "./objects";
-import { addProjectToArray, displayProjects, getTaskInfo } from "./misc-functions";
+import { addProjectToArray, displayProjects, getTaskInfo, addTaskToProject, displayTasks, currentProjectObject, clearTaskForm, checkIfProjectsExist } from "./misc-functions";
 
 let addProjectButton = document.querySelector(".add-project");
-let projects = [];
+let projects = checkIfProjectsExist();
+displayProjects(projects);
+
+let projectModal = document.querySelector(".project-modal");
+let projectNameInput = document.querySelector("#project-name");
+let taskModal = document.querySelector(".task-modal");
 
 addProjectButton.addEventListener("click", function() {
-  let projectModal = document.querySelector(".project-modal");
-  let projectNameInput = document.querySelector("#project-name");
-  // open modal
   projectModal.showModal(); 
-  // close modal
-  document.querySelector(".close-modal1").addEventListener("click", function() { 
-    projectModal.close(); 
-    projectNameInput.value = ""; 
-  })
-  // submit modal
-  document.querySelector("#submit-button1").addEventListener("click", function() {
-    let newProject = createProject(projectNameInput.value);
-    projects = addProjectToArray(newProject, projects);
-    projectModal.close();
-    projectNameInput.value = "";
-    displayProjects(projects);
-  })
+})
+
+document.querySelector(".close-modal1").addEventListener("click", function() { 
+  projectModal.close(); 
+  projectNameInput.value = ""; 
+});
+
+document.querySelector("#submit-button1").addEventListener("click", function() {
+  let newProject = createProject(projectNameInput.value);
+  projects = addProjectToArray(newProject, projects);
+  
+  let projectStorage = JSON.stringify(projects);
+  localStorage.setItem('projects', projectStorage);
+
+  projectModal.close();
+  projectNameInput.value = "";
+  displayProjects(projects);
 })
 
 let addTaskButton = document.querySelector(".add-task");
 
 addTaskButton.addEventListener("click", function() {
-  let taskModal = document.querySelector(".task-modal");
+  if (!currentProjectObject) {
+    alert("Please select a project first.");
+    return;
+  }  
+  
   taskModal.showModal();
+})
 
-  document.querySelector(".close-modal2").addEventListener("click", function() {
-    taskModal.close();
-  })
+document.querySelector(".close-modal2").addEventListener("click", function() {
+  clearTaskForm();
+  taskModal.close();
+})
 
-  document.querySelector("#submit-button2").addEventListener("click", function() {
-    let newTask = getTaskInfo();
-    
-  })
+document.querySelector("#submit-button2").addEventListener("click", function() {
+  let newTask = getTaskInfo();
+  projects = addTaskToProject(newTask, projects);
+
+  let projectStorage = JSON.stringify(projects);
+  localStorage.setItem('projects', projectStorage);
+
+  displayTasks(currentProjectObject, projects);
+  clearTaskForm();
+  taskModal.close();
 })
