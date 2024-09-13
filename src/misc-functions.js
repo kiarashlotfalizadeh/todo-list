@@ -108,3 +108,6 @@ function checkIfProjectsExist() {
 }
 
 export { addProjectToArray, displayProjects, getTaskInfo, addTaskToProject, displayTasks, clearTaskForm, checkIfProjectsExist, currentProjectObject };
+
+
+
